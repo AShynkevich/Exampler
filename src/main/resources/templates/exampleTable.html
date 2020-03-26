@@ -43,13 +43,15 @@
         function check(elem) {
             var but = $(elem);
             var id = but.attr("id");
-            var val = $(`input[id="${id}"]`).val();
+            var inputField = $(`input[id="${id}"]`);
+            var val = inputField.val();
                 if (val) {
                     $.post("/examples/" + id, { value: val }, function(data) {
                     if (data) {
                         but.text("Правильно!");
                         but.attr('class', 'btn btn-success');
                         but.attr('disabled', true);
+                        inputField.attr('disabled', true);
                     } else {
                         $('#wrongModal').modal();
                         but.text("Неверно!");
