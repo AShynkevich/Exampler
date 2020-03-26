@@ -52,6 +52,11 @@
                         but.attr('class', 'btn btn-success');
                         but.attr('disabled', true);
                         inputField.attr('disabled', true);
+                        $.get("/examples", function(data) {
+                            if (data) {
+                                $('#scoreModal').modal();
+                            }
+                        });
                     } else {
                         $('#wrongModal').modal();
                         but.text("Неверно!");
@@ -81,7 +86,19 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-sm" id="scoreModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Результат</h5>
+            </div>
+            <div class="modal-body">
+                <h2 style="color:green">Умничка!</h2>
             </div>
         </div>
     </div>
