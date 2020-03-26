@@ -8,59 +8,57 @@
 
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
-
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Exampler</a>
-</nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Exampler</a>
+    </nav>
 
-<main role="main" class="container">
+    <main role="main" class="container">
 
-    <table class="table">
-        <tr th:each="example : ${examples}">
-            <td th:if="${example.terms[0].hidden}"><input th:id="${example.id}" type="number"></td>
-            <td th:unless="${example.terms[0].hidden}" th:text="${example.terms[0].value}" />
+        <table class="table">
+            <tr th:each="example : ${examples}">
+                <td th:if="${example.terms[0].hidden}"><input th:id="${example.id}" type="number"></td>
+                <td th:unless="${example.terms[0].hidden}" th:text="${example.terms[0].value}" />
 
-            <td th:text="${example.operation.value}"/>
+                <td th:text="${example.operation.value}"/>
 
-            <td th:if="${example.terms[1].hidden}"><input th:id="${example.id}" type="number"></td>
-            <td th:unless="${example.terms[1].hidden}" th:text="${example.terms[1].value}"/>
+                <td th:if="${example.terms[1].hidden}"><input th:id="${example.id}" type="number"></td>
+                <td th:unless="${example.terms[1].hidden}" th:text="${example.terms[1].value}"/>
 
-            <td>=</td>
+                <td>=</td>
 
-            <td th:if="${example.terms[2].hidden}"><input th:id="${example.id}" type="number"></td>
-            <td th:unless="${example.terms[2].hidden}" th:text="${example.terms[2].value}"/>
+                <td th:if="${example.terms[2].hidden}"><input th:id="${example.id}" type="number"></td>
+                <td th:unless="${example.terms[2].hidden}" th:text="${example.terms[2].value}"/>
 
-            <td><button th:id="${example.id}" type="button" class="btn btn-info" onclick="check(this)">Проверить</button></td>
-        </tr>
-    </table>
-
-</main>
+                <td><button th:id="${example.id}" type="button" class="btn btn-info" onclick="check(this)">Проверить</button></td>
+            </tr>
+        </table>
+    </main>
 <!-- /.container -->
 
-<script>
-    function check(elem) {
-        var but = $(elem);
-        var id = but.attr("id");
-        var val = $(`input[id="${id}"]`).val();
-            if (val) {
-                $.post("/examples/" + id, { value: val }, function(data) {
-                if (data) {
-                    but.text("Правильно!");
-                    but.attr('class', 'btn btn-success');
-                    but.attr('disabled', true);
-                } else {
-                    $('#wrongModal').modal();
-                    but.text("Неверно!");
-                    but.attr('class', 'btn btn-danger');
-                }
-            });
+    <script>
+        function check(elem) {
+            var but = $(elem);
+            var id = but.attr("id");
+            var val = $(`input[id="${id}"]`).val();
+                if (val) {
+                    $.post("/examples/" + id, { value: val }, function(data) {
+                    if (data) {
+                        but.text("Правильно!");
+                        but.attr('class', 'btn btn-success');
+                        but.attr('disabled', true);
+                    } else {
+                        $('#wrongModal').modal();
+                        but.text("Неверно!");
+                        but.attr('class', 'btn btn-danger');
+                    }
+                });
+            }
         }
-    }
-</script>
+    </script>
     <script type="text/javascript" th:src="@{webjars/jquery/3.3.1/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
 </body>
