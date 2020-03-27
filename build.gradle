@@ -22,6 +22,7 @@ configurations {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.apache.commons:commons-lang3:3.9'
     implementation 'org.webjars:bootstrap:4.2.1'
     implementation 'org.webjars:jquery:3.3.1'
 

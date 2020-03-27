@@ -2,7 +2,7 @@ package by.shynkevich.math.example.domain;
 
 public enum Operation {
 
-    PLUS("+"), MINUS("-");
+    PLUS("+"), MINUS("-"), EQUALS("=");
 
     private String value;
 

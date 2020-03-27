@@ -26,11 +26,11 @@ public class ExampleService {
         return new ArrayList<>(exampleMap.values());
     }
 
-    public boolean checkResult(String id, int value) {
+    public boolean checkResult(String id, Integer value) {
         boolean isSuccess = exampleMap.get(id)
                 .getTerms()
                 .stream()
-                .anyMatch(term -> term.isHidden() && value == term.getValue());
+                .anyMatch(term -> term.isHidden() && term.equals(value));
 
         if (isSuccess) {
             success.add(id);

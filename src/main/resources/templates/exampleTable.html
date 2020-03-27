@@ -17,23 +17,15 @@
     </nav>
 
     <main role="main" class="container">
-
         <table class="table">
             <tr th:each="example : ${examples}">
-                <td th:if="${example.terms[0].hidden}"><input th:id="${example.id}" type="number"></td>
-                <td th:unless="${example.terms[0].hidden}" th:text="${example.terms[0].value}" />
-
-                <td th:text="${example.operation.value}"/>
-
-                <td th:if="${example.terms[1].hidden}"><input th:id="${example.id}" type="number"></td>
-                <td th:unless="${example.terms[1].hidden}" th:text="${example.terms[1].value}"/>
-
-                <td>=</td>
-
-                <td th:if="${example.terms[2].hidden}"><input th:id="${example.id}" type="number"></td>
-                <td th:unless="${example.terms[2].hidden}" th:text="${example.terms[2].value}"/>
-
-                <td><button th:id="${example.id}" type="button" class="btn btn-info" onclick="check(this)">Проверить</button></td>
+                <th:block th:each="term : ${example.terms}">
+                    <td th:if="${term.hidden}"><input th:id="${example.id}" type="number"></td>
+                    <td th:unless="${term.hidden}" th:text="${term.show()}" />
+                </th:block>
+                <td>
+                    <button th:id="${example.id}" type="button" class="btn btn-info" onclick="check(this)">Проверить</button>
+                </td>
             </tr>
         </table>
     </main>

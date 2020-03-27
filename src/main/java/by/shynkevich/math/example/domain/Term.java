@@ -1,20 +1,10 @@
 package by.shynkevich.math.example.domain;
 
-public class Term {
+public interface Term<T> {
 
-    private final int value;
-    private final boolean hidden;
+    boolean isHidden();
 
-    public Term(int value, boolean hidden) {
-        this.value = value;
-        this.hidden = hidden;
-    }
+    T getValue();
 
-    public int getValue() {
-        return value;
-    }
-
-    public boolean isHidden() {
-        return hidden;
-    }
+    String show();
 }
