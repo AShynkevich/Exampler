@@ -17,4 +17,12 @@ public enum Operator {
     public String getValue() {
         return value;
     }
+
+    public static Operator[] getOperationOperators() {
+        return new Operator[]{PLUS, MINUS};
+    }
+
+    public static Operator[] getCompareOperators() {
+        return new Operator[]{EQUALS, LESS_THAN, MORE_THAN};
+    }
 }

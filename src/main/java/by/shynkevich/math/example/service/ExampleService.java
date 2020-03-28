@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import by.shynkevich.math.example.ExampleFactory;
+import by.shynkevich.math.example.domain.ExampleType;
 import by.shynkevich.math.example.domain.example.TypicalExample;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +19,9 @@ public class ExampleService {
     private Map<String, TypicalExample> exampleMap;
     private Set<String> success;
 
-    public List<TypicalExample> init(int count, int minLimit, int maxLimit) {
+    public List<TypicalExample> init(ExampleType type, int count, int minLimit, int maxLimit) {
         exampleMap = IntStream.range(0, count)
-                .mapToObj(i -> ExampleFactory.createExample(minLimit, maxLimit))
+                .mapToObj(i -> ExampleFactory.createExample(type, minLimit, maxLimit))
                 .collect(Collectors.toMap(TypicalExample::getId, entry -> entry));
         success = new HashSet<>();
         return new ArrayList<>(exampleMap.values());
