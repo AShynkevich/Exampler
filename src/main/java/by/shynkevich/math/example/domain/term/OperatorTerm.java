@@ -1,13 +1,13 @@
 package by.shynkevich.math.example.domain.term;
 
-import by.shynkevich.math.example.domain.Operation;
+import by.shynkevich.math.example.domain.Operator;
 
-public class OperationTerm implements Term<Operation> {
+public class OperatorTerm implements Term<Operator> {
 
-    private final Operation value;
+    private final Operator value;
     private final boolean hidden;
 
-    public OperationTerm(Operation value, boolean hidden) {
+    public OperatorTerm(Operator value, boolean hidden) {
         this.value = value;
         this.hidden = hidden;
     }
@@ -18,7 +18,7 @@ public class OperationTerm implements Term<Operation> {
     }
 
     @Override
-    public Operation getValue() {
+    public Operator getValue() {
         return value;
     }
 

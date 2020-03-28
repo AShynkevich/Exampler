@@ -1,12 +1,16 @@
 package by.shynkevich.math.example.domain;
 
-public enum Operation {
+public enum Operator {
 
-    PLUS("+"), MINUS("-"), EQUALS("=");
+    PLUS("+"),
+    MINUS("-"),
+    EQUALS("="),
+    MORE_THAN(">"),
+    LESS_THAN("<");
 
     private String value;
 
-    Operation(String value) {
+    Operator(String value) {
         this.value = value;
     }
 

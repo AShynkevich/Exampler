@@ -4,29 +4,29 @@ import java.util.Random;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import by.shynkevich.math.example.domain.Operation;
-import by.shynkevich.math.example.domain.term.OperationTerm;
+import by.shynkevich.math.example.domain.Operator;
+import by.shynkevich.math.example.domain.term.OperatorTerm;
 import by.shynkevich.math.example.domain.example.TypicalExample;
 import by.shynkevich.math.example.domain.term.ValueTerm;
 
 public class ExampleFactory {
 
     private static final Random RANDOM = new Random();
-    private static final OperationTerm EQUAL_TERM = new OperationTerm(Operation.EQUALS, false);
-    private static final OperationTerm[] OPERATION_TERMS = Stream.of(Operation.MINUS, Operation.PLUS)
-            .map(value -> new OperationTerm(value, false)).toArray(OperationTerm[]::new);
+    private static final OperatorTerm EQUAL_TERM = new OperatorTerm(Operator.EQUALS, false);
+    private static final OperatorTerm[] OPERATION_TERMS = Stream.of(Operator.MINUS, Operator.PLUS)
+            .map(value -> new OperatorTerm(value, false)).toArray(OperatorTerm[]::new);
 
     public static TypicalExample createExample(int minLimit, int maxLimit) {
-        OperationTerm operation = OPERATION_TERMS[RANDOM.nextInt(OPERATION_TERMS.length)];
+        OperatorTerm operation = OPERATION_TERMS[RANDOM.nextInt(OPERATION_TERMS.length)];
         return exampleStrategy(operation, minLimit, maxLimit);
     }
 
-    private static TypicalExample exampleStrategy(OperationTerm operation, int minLimit, int maxLimit) {
+    private static TypicalExample exampleStrategy(OperatorTerm operation, int minLimit, int maxLimit) {
         int result;
         int firstTerm;
         int secondTerm;
 
-        if (Operation.PLUS.equals(operation.getValue())) {
+        if (Operator.PLUS.equals(operation.getValue())) {
             result = getRandomNumberInRange(minLimit, maxLimit);
             firstTerm = getRandomNumberInRange(minLimit, result);
             secondTerm = result - firstTerm;
