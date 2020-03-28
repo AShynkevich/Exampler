@@ -1,4 +1,6 @@
-package by.shynkevich.math.example.domain;
+package by.shynkevich.math.example.domain.term;
+
+import by.shynkevich.math.example.domain.Operation;
 
 public class OperationTerm implements Term<Operation> {
 

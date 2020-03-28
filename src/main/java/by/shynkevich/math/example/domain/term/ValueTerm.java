@@ -1,4 +1,4 @@
-package by.shynkevich.math.example.domain;
+package by.shynkevich.math.example.domain.term;
 
 public class ValueTerm implements Term<Integer> {
 

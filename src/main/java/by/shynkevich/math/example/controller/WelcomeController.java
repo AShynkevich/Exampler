@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import javax.servlet.http.HttpSession;
 
-import by.shynkevich.math.example.domain.TypicalExample;
+import by.shynkevich.math.example.domain.example.TypicalExample;
 import by.shynkevich.math.example.service.ExampleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

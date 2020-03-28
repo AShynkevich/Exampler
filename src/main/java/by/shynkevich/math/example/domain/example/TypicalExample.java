@@ -1,9 +1,11 @@
-package by.shynkevich.math.example.domain;
+package by.shynkevich.math.example.domain.example;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import by.shynkevich.math.example.domain.term.Term;
 
 public class TypicalExample {
 

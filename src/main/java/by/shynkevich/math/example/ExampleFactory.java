@@ -5,9 +5,9 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import by.shynkevich.math.example.domain.Operation;
-import by.shynkevich.math.example.domain.OperationTerm;
-import by.shynkevich.math.example.domain.TypicalExample;
-import by.shynkevich.math.example.domain.ValueTerm;
+import by.shynkevich.math.example.domain.term.OperationTerm;
+import by.shynkevich.math.example.domain.example.TypicalExample;
+import by.shynkevich.math.example.domain.term.ValueTerm;
 
 public class ExampleFactory {
 

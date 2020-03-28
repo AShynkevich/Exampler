@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import by.shynkevich.math.example.ExampleFactory;
-import by.shynkevich.math.example.domain.TypicalExample;
+import by.shynkevich.math.example.domain.example.TypicalExample;
 import org.springframework.stereotype.Service;
 
 @Service
