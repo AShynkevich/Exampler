@@ -2,6 +2,7 @@ package by.shynkevich.math.example.generator;
 
 import java.util.stream.Stream;
 
+import by.shynkevich.math.example.domain.ExampleType;
 import by.shynkevich.math.example.domain.Operator;
 import by.shynkevich.math.example.domain.example.TypicalExample;
 import by.shynkevich.math.example.domain.term.OperatorTerm;
@@ -36,6 +37,7 @@ public class ActionCompareGenerator implements ExampleGenerator {
 
         ValueTerm[] valueTerms = convertToTerms(0, firstTerms[0], firstTerms[1], secondTerms[0], secondTerms[1]);
         return new TypicalExample(
+                ExampleType.ONE_ACTION_COMPARING,
                 valueTerms[0], convertToTerm(firstOperation, false), valueTerms[1],
                 operatorTerm,
                 valueTerms[2], convertToTerm(secondOperation, false), valueTerms[3]);

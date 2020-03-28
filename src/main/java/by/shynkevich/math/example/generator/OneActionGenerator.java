@@ -3,6 +3,7 @@ package by.shynkevich.math.example.generator;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import by.shynkevich.math.example.domain.ExampleType;
 import by.shynkevich.math.example.domain.Operator;
 import by.shynkevich.math.example.domain.example.TypicalExample;
 import by.shynkevich.math.example.domain.term.OperatorTerm;
@@ -22,6 +23,8 @@ public class OneActionGenerator implements ExampleGenerator {
 
         ValueTerm[] valueTerms = convertToTerms(1, terms[0], terms[1], terms[2]);
         OperatorTerm operatorTerm = new OperatorTerm(operation, false);
-        return new TypicalExample(valueTerms[0], operatorTerm, valueTerms[1], EQUAL_TERM, valueTerms[2]);
+        return new TypicalExample(ExampleType.ONE_ACTION,
+                valueTerms[0], operatorTerm, valueTerms[1],
+                EQUAL_TERM, valueTerms[2]);
     }
 }

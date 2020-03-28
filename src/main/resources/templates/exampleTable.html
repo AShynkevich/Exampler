@@ -20,7 +20,18 @@
         <table class="table">
             <tr th:each="example : ${examples}">
                 <th:block th:each="term : ${example.terms}">
-                    <td th:if="${term.hidden}"><input th:id="${example.id}" type="number"></td>
+
+                    <td th:if="${term.hidden}">
+                        <th:block th:switch="${example.type.name()}">
+                            <input th:case="'ONE_ACTION'" th:id="${example.id}" type="number">
+                            <input th:case="'ONE_ACTION_COMPARING'" th:id="${example.id}" type="text">
+<!--                            <select th:case="'ONE_ACTION_COMPARING'" th:id="${example.id}" name="type" class="browser-default custom-select">-->
+<!--                                <option value="&lt;" selected>&lt;</option>-->
+<!--                                <option value="&gt;">&gt;</option>-->
+<!--                                <option value="=">=</option>-->
+<!--                            </select>-->
+                        </th:block>
+                    </td>
                     <td th:unless="${term.hidden}" th:text="${term.show()}" />
                 </th:block>
                 <td>

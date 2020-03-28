@@ -27,7 +27,7 @@ public class ExampleService {
         return new ArrayList<>(exampleMap.values());
     }
 
-    public boolean checkResult(String id, Integer value) {
+    public boolean checkResult(String id, String value) {
         boolean isSuccess = exampleMap.get(id)
                 .getTerms()
                 .stream()

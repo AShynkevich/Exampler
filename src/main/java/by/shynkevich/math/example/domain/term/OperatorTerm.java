@@ -26,4 +26,9 @@ public class OperatorTerm implements Term<Operator> {
     public String show() {
         return value.getValue();
     }
+
+    @Override
+    public boolean equals(String obj) {
+        return value.getValue().equals(obj);
+    }
 }

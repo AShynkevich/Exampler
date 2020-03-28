@@ -7,4 +7,6 @@ public interface Term<T> {
     T getValue();
 
     String show();
+
+    boolean equals(String obj);
 }
