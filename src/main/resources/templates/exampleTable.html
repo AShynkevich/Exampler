@@ -13,7 +13,7 @@
 <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">Exampler</a>
+        <a class="navbar-brand" href="/">Exampler</a>
     </nav>
 
     <main role="main" class="container">
@@ -23,13 +23,13 @@
 
                     <td th:if="${term.hidden}">
                         <th:block th:switch="${example.type.name()}">
-                            <input th:case="'ONE_ACTION'" th:id="${example.id}" type="number">
-                            <input th:case="'ONE_ACTION_COMPARING'" th:id="${example.id}" type="text">
-<!--                            <select th:case="'ONE_ACTION_COMPARING'" th:id="${example.id}" name="type" class="browser-default custom-select">-->
-<!--                                <option value="&lt;" selected>&lt;</option>-->
-<!--                                <option value="&gt;">&gt;</option>-->
-<!--                                <option value="=">=</option>-->
-<!--                            </select>-->
+                            <input th:case="'ONE_ACTION'" th:input-id="${example.id}" type="number" required="true">
+                            <select th:case="'ONE_ACTION_COMPARING'" th:input-id="${example.id}" name="type" required="true">
+                                <option disabled selected></option>
+                                <option value="&lt;">&lt;</option>
+                                <option value="&gt;">&gt;</option>
+                                <option value="=">=</option>
+                            </select>
                         </th:block>
                     </td>
                     <td th:unless="${term.hidden}" th:text="${term.show()}" />

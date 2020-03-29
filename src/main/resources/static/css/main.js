@@ -1,7 +1,7 @@
 function check(elem) {
     var but = $(elem);
     var id = but.attr("id");
-    var inputField = $(`input[id="${id}"]`);
+    var inputField = $(`[input-id="${id}"]`);
     var val = inputField.val();
     if (val) {
         $.post("/examples/" + id, {
