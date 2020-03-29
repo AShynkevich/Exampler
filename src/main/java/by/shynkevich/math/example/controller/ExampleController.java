@@ -28,6 +28,7 @@ public class ExampleController {
     private static final String SERVICE_KEY = "service";
     private static final String EXAMPLES_KEY = "examples";
     private static final String EXAMPLE_TABLE_VIEW = "exampleTable";
+    private static final String TRAIN_KEY = "train";
 
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
@@ -38,9 +39,11 @@ public class ExampleController {
     public String main(@RequestParam(name = "count", defaultValue = "10") int count,
                        @RequestParam(name = "minLimit", defaultValue = "0") int minLimit,
                        @RequestParam(name = "maxLimit", defaultValue = "10") int maxLimit,
+                       @RequestParam(name = "train", defaultValue = "false") boolean isTrain,
                        @RequestParam(name = "type", defaultValue = "ONE_ACTION") ExampleType type,
                        Model model, HttpSession session) {
         session.setAttribute(SERVICE_KEY, new ExampleService());
+        session.setAttribute(TRAIN_KEY, isTrain);
         ExampleService service = extractService(session);
 
         List<TypicalExample> examples = service.init(type, count, minLimit, maxLimit);
@@ -48,7 +51,7 @@ public class ExampleController {
         return EXAMPLE_TABLE_VIEW;
     }
 
-    @GetMapping
+    @GetMapping("/results")
     public ResponseEntity<Boolean> checkTotal(HttpSession session) {
         ExampleService service = extractService(session);
         return new ResponseEntity<>(service.allResolved(), HttpStatus.OK);

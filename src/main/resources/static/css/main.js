@@ -12,7 +12,7 @@ function check(elem) {
                 but.attr('class', 'btn btn-success');
                 but.attr('disabled', true);
                 inputField.attr('disabled', true);
-                $.get("/examples", function(data) {
+                $.get("/examples/results", function(data) {
                     if (data) {
                         $('#scoreModal').modal();
                     }
@@ -21,6 +21,9 @@ function check(elem) {
                 $('#wrongModal').modal();
                 but.text("Неверно!");
                 but.attr('class', 'btn btn-danger');
+                var type = $('#ex-mode').val() == 'true';
+                inputField.attr('disabled', !type);
+                but.attr('disabled', !type);
             }
         });
     }
