@@ -25,6 +25,6 @@ public class ValueTerm implements Term<Integer> {
 
     @Override
     public boolean equals(String value) {
-        return value.equals(Integer.valueOf(value));
+        return this.value.equals(Integer.valueOf(value));
     }
 }
