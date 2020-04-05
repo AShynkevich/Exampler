@@ -14,6 +14,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="/">Exampler</a>
+        <a class="navbar-brand" href="#" onclick="getResult()">Check</a>
     </nav>
 
     <main role="main" class="container">
@@ -76,6 +77,51 @@
             </div>
             <div class="modal-body">
                 <h2 style="color:green">Умничка!</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="resultModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <b>Ошибок</b>
+                        </div>
+                        <div class="col">
+                            <b>Решено</b>
+                        </div>
+                        <div class="col">
+                            <b>Всего примеров</b>
+                        </div>
+                        <div class="col">
+                            <b>Всё решено?</b>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div id="failed" class="col">
+                        </div>
+                        <div id="resolved" class="col">
+                        </div>
+                        <div id="total" class="col">
+                        </div>
+                        <div id="done" class="col">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

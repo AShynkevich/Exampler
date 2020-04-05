@@ -13,7 +13,10 @@ function check(elem) {
                 but.attr('disabled', true);
                 inputField.attr('disabled', true);
                 $.get("/examples/results", function(data) {
-                    if (data) {
+                    console.log(data.countFailed);
+                    console.log(data.countTotal);
+                    console.log(data.done);
+                    if (data.done) {
                         $('#scoreModal').modal();
                     }
                 });
@@ -27,4 +30,17 @@ function check(elem) {
             }
         });
     }
+}
+
+function getResult() {
+    $.get("/examples/results", function(data) {
+        console.log(data.countFailed);
+        console.log(data.countTotal);
+        console.log(data.done);
+        $('#failed').html(data.countFailed);
+        $('#resolved').html(data.countResolved);
+        $('#total').html(data.countTotal);
+        $('#done').html(data.done ? 'Да' : 'Нет');
+        $('#resultModal').modal();
+    });
 }

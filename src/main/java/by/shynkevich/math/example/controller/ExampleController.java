@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import by.shynkevich.math.example.controller.converter.ExampleTypeConverter;
 import by.shynkevich.math.example.domain.ExampleType;
+import by.shynkevich.math.example.domain.Result;
 import by.shynkevich.math.example.domain.example.TypicalExample;
 import by.shynkevich.math.example.exception.NoServiceException;
 import by.shynkevich.math.example.service.ExampleService;
@@ -52,9 +53,9 @@ public class ExampleController {
     }
 
     @GetMapping("/results")
-    public ResponseEntity<Boolean> checkTotal(HttpSession session) {
+    public ResponseEntity<Result> checkTotal(HttpSession session) {
         ExampleService service = extractService(session);
-        return new ResponseEntity<>(service.allResolved(), HttpStatus.OK);
+        return new ResponseEntity<>(service.getResult(), HttpStatus.OK);
     }
 
     @PostMapping("/{id}")
