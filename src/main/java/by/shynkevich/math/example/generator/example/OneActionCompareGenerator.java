@@ -1,15 +1,21 @@
-package by.shynkevich.math.example.generator;
+package by.shynkevich.math.example.generator.example;
 
 import java.util.stream.Stream;
+import javax.annotation.Resource;
 
 import by.shynkevich.math.example.domain.ExampleType;
 import by.shynkevich.math.example.domain.Operator;
 import by.shynkevich.math.example.domain.example.TypicalExample;
 import by.shynkevich.math.example.domain.term.OperatorTerm;
 import by.shynkevich.math.example.domain.term.ValueTerm;
-import by.shynkevich.math.example.util.MathUtils;
+import by.shynkevich.math.example.generator.action.ActionFactory;
+import org.springframework.stereotype.Component;
 
-public class ActionCompareGenerator implements ExampleGenerator {
+@Component
+public class OneActionCompareGenerator implements ExampleGenerator {
+
+    @Resource
+    private ActionFactory actionFactory;
 
     private static final OperatorTerm[] OPERATOR_TERMS =
             Stream.of(Operator.LESS_THAN, Operator.MORE_THAN, Operator.EQUALS)
@@ -20,8 +26,8 @@ public class ActionCompareGenerator implements ExampleGenerator {
         Operator firstOperation = Operator.getOperationOperators()[RANDOM.nextInt(2)];
         Operator secondOperation = Operator.getOperationOperators()[RANDOM.nextInt(2)];
 
-        int[] firstTerms = MathUtils.generateAction(firstOperation, minLimit, maxLimit);
-        int[] secondTerms = MathUtils.generateAction(secondOperation, minLimit, maxLimit);
+        int[] firstTerms = actionFactory.generateAction(firstOperation, minLimit, maxLimit);
+        int[] secondTerms = actionFactory.generateAction(secondOperation, minLimit, maxLimit);
 
         int firstResult = firstTerms[2];
         int secondResult = secondTerms[2];

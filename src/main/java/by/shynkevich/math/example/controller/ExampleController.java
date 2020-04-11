@@ -2,6 +2,7 @@ package by.shynkevich.math.example.controller;
 
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import by.shynkevich.math.example.controller.converter.ExampleTypeConverter;
@@ -31,6 +32,9 @@ public class ExampleController {
     private static final String EXAMPLE_TABLE_VIEW = "exampleTable";
     private static final String TRAIN_KEY = "train";
 
+    @Resource
+    private ExampleService exampleService;
+
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
         dataBinder.registerCustomEditor(ExampleType.class, new ExampleTypeConverter());
@@ -43,7 +47,7 @@ public class ExampleController {
                        @RequestParam(name = "train", defaultValue = "false") boolean isTrain,
                        @RequestParam(name = "type", defaultValue = "ONE_ACTION") ExampleType type,
                        Model model, HttpSession session) {
-        session.setAttribute(SERVICE_KEY, new ExampleService());
+        session.setAttribute(SERVICE_KEY, exampleService);
         session.setAttribute(TRAIN_KEY, isTrain);
         ExampleService service = extractService(session);
 

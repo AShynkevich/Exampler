@@ -1,4 +1,4 @@
-package by.shynkevich.math.example.generator;
+package by.shynkevich.math.example.generator.example;
 
 import java.util.Random;
 import java.util.Set;
@@ -10,10 +10,23 @@ import by.shynkevich.math.example.domain.example.TypicalExample;
 import by.shynkevich.math.example.domain.term.OperatorTerm;
 import by.shynkevich.math.example.domain.term.ValueTerm;
 
+/**
+ * Represents example generator class.
+ */
 public interface ExampleGenerator {
 
+    /**
+     * Random number generator
+     */
     Random RANDOM = new Random();
 
+    /**
+     * Generates a @{@link TypicalExample} instance.
+     *
+     * @param minLimit min limit bound
+     * @param maxLimit max limit bound
+     * @return the @{@link TypicalExample} instance.
+     */
     TypicalExample generate(int minLimit, int maxLimit);
 
     default ValueTerm[] convertToTerms(int countToHide, int... values) {

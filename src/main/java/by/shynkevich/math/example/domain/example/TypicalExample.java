@@ -8,6 +8,15 @@ import java.util.stream.Stream;
 import by.shynkevich.math.example.domain.ExampleType;
 import by.shynkevich.math.example.domain.term.Term;
 
+/**
+ * Represents any type of example where the sequence of terms
+ * are represented as completed math statement
+ *
+ * <p>
+ * e.g. statement: 9 - 5 = 4
+ * will be represented as List{Term(9), Term(-), Term(5), Term(=), Term(4)}
+ * </p>
+ */
 public class TypicalExample {
 
     private final String id;

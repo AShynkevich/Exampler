@@ -9,7 +9,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import by.shynkevich.math.example.ExampleFactory;
+import javax.annotation.Resource;
+
+import by.shynkevich.math.example.generator.example.ExampleGeneratorFactory;
 import by.shynkevich.math.example.domain.ExampleType;
 import by.shynkevich.math.example.domain.Result;
 import by.shynkevich.math.example.domain.example.TypicalExample;
@@ -18,13 +20,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExampleService {
 
+    @Resource
+    private ExampleGeneratorFactory factory;
+
     private Map<String, TypicalExample> exampleMap;
     private Set<String> success;
     private AtomicInteger failed;
 
     public List<TypicalExample> init(ExampleType type, int count, int minLimit, int maxLimit) {
         exampleMap = IntStream.range(0, count)
-                .mapToObj(i -> ExampleFactory.createExample(type, minLimit, maxLimit))
+                .mapToObj(i -> factory.createExample(type, minLimit, maxLimit))
                 .collect(Collectors.toMap(TypicalExample::getId, entry -> entry));
         success = new HashSet<>();
         failed = new AtomicInteger();
