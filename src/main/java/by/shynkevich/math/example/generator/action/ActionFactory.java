@@ -28,10 +28,23 @@ public class ActionFactory {
      * @return the array of terms
      */
     public int[] generateAction(Operator operator, int minLimit, int maxLimit) {
+        return generateAction(operator, minLimit, maxLimit, null);
+    }
+
+    /**
+     * Generates action by operator.
+     *
+     * @param operator     the {@link Operator}.
+     * @param minLimit     min limit bound
+     * @param maxLimit     max limit bound
+     * @param forcedResult the forced result
+     * @return the array of terms
+     */
+    public int[] generateAction(Operator operator, int minLimit, int maxLimit, Integer forcedResult) {
         Action action = actionStrategy.get(operator);
         if (Objects.isNull(action)) {
             throw new NoOperationException(String.format(NO_ACTION_FORMAT, operator.name()));
         }
-        return action.generate(minLimit, maxLimit);
+        return action.generate(minLimit, maxLimit, forcedResult);
     }
 }

@@ -1,5 +1,7 @@
 package by.shynkevich.math.example.generator.action;
 
+import java.util.Optional;
+
 import by.shynkevich.math.example.util.MathUtils;
 
 /**
@@ -8,8 +10,9 @@ import by.shynkevich.math.example.util.MathUtils;
 public class SumAction implements Action {
 
     @Override
-    public int[] generate(int minLimit, int maxLimit) {
-        int result = MathUtils.getRandomNumberInRange(minLimit, maxLimit);
+    public int[] generate(int minLimit, int maxLimit, Integer forcedResult) {
+        int result = Optional.ofNullable(forcedResult)
+                .orElse(MathUtils.getRandomNumberInRange(minLimit, maxLimit));
         int firstTerm = MathUtils.getRandomNumberInRange(minLimit, result);
         int secondTerm = result - firstTerm;
 

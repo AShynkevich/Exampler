@@ -16,11 +16,14 @@ public interface Action {
      * it will produce the sequence: new int[]{9, 5, 4}
      * <p>
      * etc.
+     *
+     * The forced result is an implicit one term of sequence.
      * </p>
      *
-     * @param minLimit min limit bound
-     * @param maxLimit max limit bound
+     * @param minLimit     min limit bound
+     * @param maxLimit     max limit bound
+     * @param forcedResult the forced result
      * @return the array of terms.
      */
-    int[] generate(int minLimit, int maxLimit);
+    int[] generate(int minLimit, int maxLimit, Integer forcedResult);
 }

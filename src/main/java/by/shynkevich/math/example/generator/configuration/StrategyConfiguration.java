@@ -10,6 +10,7 @@ import by.shynkevich.math.example.generator.example.OneActionGenerator;
 import by.shynkevich.math.example.generator.action.Action;
 import by.shynkevich.math.example.generator.action.SubtractionAction;
 import by.shynkevich.math.example.generator.action.SumAction;
+import by.shynkevich.math.example.generator.example.TwoActionGenerator;
 import com.google.common.collect.ImmutableMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,7 @@ public class StrategyConfiguration {
     public Map<ExampleType, ExampleGenerator> getExampleStrategy() {
         return ImmutableMap.<ExampleType, ExampleGenerator>builder()
                 .put(ExampleType.ONE_ACTION, getOneActionGenerator())
+                .put(ExampleType.TWO_ACTION, getTwoActionGenerator())
                 .put(ExampleType.ONE_ACTION_COMPARING, getOneActionCompareGenerator())
                 .build();
     }
@@ -36,6 +38,11 @@ public class StrategyConfiguration {
     @Bean
     public ExampleGenerator getOneActionGenerator() {
         return new OneActionGenerator();
+    }
+
+    @Bean
+    public ExampleGenerator getTwoActionGenerator() {
+        return new TwoActionGenerator();
     }
 
     @Bean
