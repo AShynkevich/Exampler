@@ -17,6 +17,14 @@ public class ExampleGeneratorFactory {
     @Resource
     private Map<ExampleType, ExampleGenerator> exampleStrategy;
 
+    /**
+     * Creates example by passed parameters.
+     *
+     * @param type     the @{@link ExampleType}
+     * @param minLimit min limit bound
+     * @param maxLimit max limit bound
+     * @return the instance of {@link TypicalExample}.
+     */
     public TypicalExample createExample(ExampleType type, int minLimit, int maxLimit) {
         ExampleGenerator generator = exampleStrategy.get(type);
         if (Objects.isNull(generator)) {

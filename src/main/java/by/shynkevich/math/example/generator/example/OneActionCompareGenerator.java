@@ -9,9 +9,11 @@ import by.shynkevich.math.example.domain.example.TypicalExample;
 import by.shynkevich.math.example.domain.term.OperatorTerm;
 import by.shynkevich.math.example.domain.term.ValueTerm;
 import by.shynkevich.math.example.generator.action.ActionFactory;
-import org.springframework.stereotype.Component;
 
-@Component
+/**
+ * Generates one action compare example
+ * like: <b>a + b > c - d</b> and operation variations
+ */
 public class OneActionCompareGenerator implements ExampleGenerator {
 
     @Resource

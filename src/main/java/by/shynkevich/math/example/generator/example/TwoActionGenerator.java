@@ -9,6 +9,10 @@ import by.shynkevich.math.example.domain.term.OperatorTerm;
 import by.shynkevich.math.example.domain.term.ValueTerm;
 import by.shynkevich.math.example.generator.action.ActionFactory;
 
+/**
+ * Generator for example with 2 action
+ * like: <b>a + b - c = d</b> and operation variations.
+ */
 public class TwoActionGenerator implements ExampleGenerator {
 
     @Resource
