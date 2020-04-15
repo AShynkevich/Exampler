@@ -24,13 +24,13 @@
                 <th:block th:each="term : ${example.terms}">
                     <td th:if="${term.hidden}">
                         <th:block th:switch="${example.type.name()}">
-                            <input th:case="*" th:input-id="${example.id}" type="number" required="true">
                             <select th:case="'ONE_ACTION_COMPARING'" th:input-id="${example.id}" name="type" required="true">
                                 <option disabled selected></option>
                                 <option value="&lt;">&lt;</option>
                                 <option value="&gt;">&gt;</option>
                                 <option value="=">=</option>
                             </select>
+                            <input th:case="*" th:input-id="${example.id}" type="number" required="true">
                         </th:block>
                     </td>
                     <td th:unless="${term.hidden}" th:text="${term.show()}" />
