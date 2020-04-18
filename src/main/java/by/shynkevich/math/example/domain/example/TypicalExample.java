@@ -1,5 +1,6 @@
 package by.shynkevich.math.example.domain.example;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -17,7 +18,7 @@ import by.shynkevich.math.example.domain.term.Term;
  * will be represented as List{Term(9), Term(-), Term(5), Term(=), Term(4)}
  * </p>
  */
-public class TypicalExample {
+public class TypicalExample implements Serializable {
 
     private final String id;
     private final List<Term<?>> terms;

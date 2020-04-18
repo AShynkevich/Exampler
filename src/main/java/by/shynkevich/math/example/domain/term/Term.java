@@ -1,5 +1,7 @@
 package by.shynkevich.math.example.domain.term;
 
+import java.io.Serializable;
+
 /**
  * Represents a term of any example.
  * <p>
@@ -10,7 +12,7 @@ package by.shynkevich.math.example.domain.term;
  *
  * @param <T>
  */
-public interface Term<T> {
+public interface Term<T> extends Serializable {
 
     boolean isHidden();
 

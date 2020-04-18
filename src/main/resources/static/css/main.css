@@ -23,3 +23,12 @@ table {
 input {
     width: 70px;
 }
+
+.navbar-nav {
+    color: darkkhaki;
+}
+
+a:hover {
+    color: darkkhaki;
+    text-decoration: underline;
+}

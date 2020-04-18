@@ -1,5 +1,6 @@
 package by.shynkevich.math.example.service;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -8,17 +9,16 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
 import javax.annotation.Resource;
 
-import by.shynkevich.math.example.generator.example.ExampleGeneratorFactory;
 import by.shynkevich.math.example.domain.ExampleType;
 import by.shynkevich.math.example.domain.Result;
 import by.shynkevich.math.example.domain.example.TypicalExample;
+import by.shynkevich.math.example.generator.example.ExampleGeneratorFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExampleService {
+public class ExampleService implements Serializable {
 
     @Resource
     private ExampleGeneratorFactory factory;

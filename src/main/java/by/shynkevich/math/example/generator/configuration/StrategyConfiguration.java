@@ -4,12 +4,12 @@ import java.util.Map;
 
 import by.shynkevich.math.example.domain.ExampleType;
 import by.shynkevich.math.example.domain.Operator;
-import by.shynkevich.math.example.generator.example.ExampleGenerator;
-import by.shynkevich.math.example.generator.example.OneActionCompareGenerator;
-import by.shynkevich.math.example.generator.example.OneActionGenerator;
 import by.shynkevich.math.example.generator.action.Action;
 import by.shynkevich.math.example.generator.action.SubtractionAction;
 import by.shynkevich.math.example.generator.action.SumAction;
+import by.shynkevich.math.example.generator.example.ExampleGenerator;
+import by.shynkevich.math.example.generator.example.OneActionCompareGenerator;
+import by.shynkevich.math.example.generator.example.OneActionGenerator;
 import by.shynkevich.math.example.generator.example.TwoActionGenerator;
 import com.google.common.collect.ImmutableMap;
 import org.springframework.context.annotation.Bean;

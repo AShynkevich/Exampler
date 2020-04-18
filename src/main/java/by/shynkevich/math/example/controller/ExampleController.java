@@ -31,6 +31,7 @@ public class ExampleController {
     private static final String EXAMPLES_KEY = "examples";
     private static final String EXAMPLE_TABLE_VIEW = "exampleTable";
     private static final String TRAIN_KEY = "train";
+    private static final String REDIRECT_EXAMPLES = "redirect:/examples";
 
     @Resource
     private ExampleService exampleService;
@@ -38,6 +39,15 @@ public class ExampleController {
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
         dataBinder.registerCustomEditor(ExampleType.class, new ExampleTypeConverter());
+    }
+
+    @GetMapping
+    public String continueExamples(HttpSession session) {
+        if (Objects.isNull(session.getAttribute(SERVICE_KEY))) {
+            return "redirect:/";
+        }
+
+        return EXAMPLE_TABLE_VIEW;
     }
 
     @PostMapping
@@ -52,8 +62,8 @@ public class ExampleController {
         ExampleService service = extractService(session);
 
         List<TypicalExample> examples = service.init(type, count, minLimit, maxLimit);
-        model.addAttribute(EXAMPLES_KEY, examples);
-        return EXAMPLE_TABLE_VIEW;
+        session.setAttribute(EXAMPLES_KEY, examples);
+        return REDIRECT_EXAMPLES;
     }
 
     @GetMapping("/results")

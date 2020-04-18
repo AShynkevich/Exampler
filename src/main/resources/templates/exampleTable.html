@@ -14,14 +14,14 @@
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="/">Exampler</a>
-        <a class="navbar-brand" href="#" onclick="getResult()">Check</a>
+        <a class="navbar-nav" href="#" onclick="getResult()">Check</a>
     </nav>
 
     <main role="main" class="container">
         <table class="table">
             <input id="ex-mode" type="hidden" th:value="${session.train}">
-            <tr th:each="example : ${examples}">
-                <th:block th:each="term : ${example.terms}">
+            <tr th:each="example : ${session.examples}">
+                <th:block th:each="term: ${example.terms}">
                     <td th:if="${term.hidden}">
                         <th:block th:switch="${example.type.name()}">
                             <select th:case="'ONE_ACTION_COMPARING'" th:input-id="${example.id}" name="type" required="true">
