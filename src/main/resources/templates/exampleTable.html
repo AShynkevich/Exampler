@@ -36,7 +36,7 @@
                     <td th:unless="${term.hidden}" th:text="${term.show()}" />
                 </th:block>
                 <td>
-                    <button th:id="${example.id}" type="button" class="btn btn-info" onclick="check(this)">Проверить</button>
+                    <button th:text="#{example.check.button}" th:id="${example.id}" type="button" class="btn btn-info" onclick="check(this)"></button>
                 </td>
             </tr>
         </table>

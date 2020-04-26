@@ -23,36 +23,36 @@
 
         <div class="starter-template">
             <h2>
-                <span>Заполни форму</span>
+                <span th:text="#{welcome.form.fill}"></span>
             </h2>
         </div>
 
         <form action="/examples" method="post">
             <div class="form-group">
-                <label for="minLimit">Нижний предел</label>
+                <label th:text="#{welcome.form.min-limit}" for="minLimit"></label>
                 <input type="number" class="form-control" id="minLimit" placeholder="0" name="minLimit">
             </div>
             <div class="form-group">
-                <label for="maxLimit">Верхний предел</label>
+                <label th:text="#{welcome.form.max-limit}" for="maxLimit"></label>
                 <input type="number" class="form-control" id="maxLimit" placeholder="10" name="maxLimit">
             </div>
             <div class="form-group">
-                <label for="count">Количество примеров</label>
+                <label th:text="#{welcome.form.example.count}" for="count"></label>
                 <input type="number" class="form-control" id="count" placeholder="10" name="count">
             </div>
             <div class="form-group">
-                <label for="ex-type">Вид примеров</label>
+                <label th:text="#{welcome.form.example.type}" for="ex-type"></label>
                 <select id="ex-type" name="type" class="browser-default custom-select">
-                    <option value="ONE_ACTION" selected>В одно действие</option>
-                    <option value="TWO_ACTION">В два действия</option>
-                    <option value="ONE_ACTION_COMPARING">В одно действие на сравнение</option>
+                    <option th:text="#{welcome.form.example.type.one-action}" value="ONE_ACTION" selected></option>
+                    <option th:text="#{welcome.form.example.type.two-action}" value="TWO_ACTION"></option>
+                    <option th:text="#{welcome.form.example.type.one-action-comparing}" value="ONE_ACTION_COMPARING"></option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="ex-train">Тренеровочный?</label>
+                <label th:text="#{welcome.form.example.train}" for="ex-train"></label>
                 <input id="ex-train" type="checkbox" class="form-control" name="train">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button th:text="#{welcome.form.submit}" type="submit" class="btn btn-primary"></button>
         </form>
     </main>
 <!-- /.container -->
