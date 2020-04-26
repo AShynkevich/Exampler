@@ -15,6 +15,8 @@ import by.shynkevich.math.example.domain.ExampleType;
 import by.shynkevich.math.example.domain.Result;
 import by.shynkevich.math.example.domain.example.TypicalExample;
 import by.shynkevich.math.example.generator.example.ExampleGeneratorFactory;
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.Builder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,14 +28,16 @@ public class ExampleService implements Serializable {
     private Map<String, TypicalExample> exampleMap;
     private Set<String> success;
     private AtomicInteger failed;
+    private boolean train;
 
-    public List<TypicalExample> init(ExampleType type, int count, int minLimit, int maxLimit) {
-        exampleMap = IntStream.range(0, count)
-                .mapToObj(i -> factory.createExample(type, minLimit, maxLimit))
+    public void init(InitParamsBuilder builder) {
+        this.exampleMap = IntStream.range(0, builder.count)
+                .mapToObj(i -> factory.createExample(builder.type, builder.minLimit, builder.maxLimit))
                 .collect(Collectors.toMap(TypicalExample::getId, entry -> entry));
-        success = new HashSet<>();
-        failed = new AtomicInteger();
-        return new ArrayList<>(exampleMap.values());
+        this.success = new HashSet<>();
+        this.failed = new AtomicInteger();
+        this.train = builder.train;
+
     }
 
     public boolean checkResult(String id, String value) {
@@ -55,5 +59,58 @@ public class ExampleService implements Serializable {
                 success.size(),
                 exampleMap.size(),
                 exampleMap.size() == success.size());
+    }
+
+    public List<TypicalExample> getExamples() {
+        return new ArrayList<>(exampleMap.values());
+    }
+
+    public boolean isTrain() {
+        return train;
+    }
+
+    public static class InitParamsBuilder implements Builder<InitParamsBuilder> {
+
+        private ExampleType type;
+        private Integer count;
+        private Integer minLimit;
+        private Integer maxLimit;
+        private Boolean train;
+
+        public InitParamsBuilder withType(ExampleType pType) {
+            this.type = pType;
+            return this;
+        }
+
+        public InitParamsBuilder withCount(int pCount) {
+            this.count = pCount;
+            return this;
+        }
+
+        public InitParamsBuilder withMinLimit(int pMinLimit) {
+            this.minLimit = pMinLimit;
+            return this;
+        }
+
+        public InitParamsBuilder withMaxLimit(int pMaxLimit) {
+            this.maxLimit = pMaxLimit;
+            return this;
+        }
+
+        public InitParamsBuilder withTrain(boolean pTrain) {
+            this.train = pTrain;
+            return this;
+        }
+
+        @Override
+        public InitParamsBuilder build() {
+            Validate.notNull(type);
+            Validate.notNull(count);
+            Validate.notNull(minLimit);
+            Validate.notNull(maxLimit);
+            Validate.notNull(train);
+
+            return this;
+        }
     }
 }

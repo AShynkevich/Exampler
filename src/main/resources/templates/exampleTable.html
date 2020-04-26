@@ -19,8 +19,8 @@
 
     <main role="main" class="container">
         <table class="table">
-            <input id="ex-mode" type="hidden" th:value="${session.train}">
-            <tr th:each="example : ${session.examples}">
+            <input id="ex-mode" type="hidden" th:value="${session.service.train}">
+            <tr th:each="example : ${session.service.examples}">
                 <th:block th:each="term: ${example.terms}">
                     <td th:if="${term.hidden}">
                         <th:block th:switch="${example.type.name()}">
