@@ -8,7 +8,7 @@ function check(elem) {
             value: val
         }, function(data) {
             if (data) {
-                but.text("Правильно!");
+                but.text(correctMsg);
                 but.attr('class', 'btn btn-success');
                 but.attr('disabled', true);
                 inputField.attr('disabled', true);
@@ -22,7 +22,7 @@ function check(elem) {
                 });
             } else {
                 $('#wrongModal').modal();
-                but.text("Неверно!");
+                but.text(incorrectMsg);
                 but.attr('class', 'btn btn-danger');
                 var type = $('#ex-mode').val() == 'true';
                 inputField.attr('disabled', !type);
@@ -40,7 +40,7 @@ function getResult() {
         $('#failed').html(data.countFailed);
         $('#resolved').html(data.countResolved);
         $('#total').html(data.countTotal);
-        $('#done').html(data.done ? 'Да' : 'Нет');
+        $('#done').html(data.done ? msgYes : msgNo);
         $('#resultModal').modal();
     });
 }
