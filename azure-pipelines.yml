@@ -21,3 +21,5 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
+- publish: $(System.DefaultWorkingDirectory)/build/libs/math-0.0.1-SNAPSHOT.jar
+  artifact: math-0.0.1-SNAPSHOT.jar
