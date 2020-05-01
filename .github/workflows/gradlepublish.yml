@@ -39,3 +39,4 @@ jobs:
       with:
         # Allows to pass an already created tag, forces update_existing to true.
         created_tag: 0.0.1-RELEASE 
+        GITHUB_TOKEN: 0a1f083a931491300ab785463e12dc68f7492d65 
