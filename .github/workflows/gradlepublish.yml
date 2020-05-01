@@ -40,3 +40,4 @@ jobs:
       with:
         # Allows to pass an already created tag, forces update_existing to true.
         created_tag: 0.0.1-RELEASE
+        update_existing: true 
