@@ -15,7 +15,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+      GITHUB_TOKEN: 0a1f083a931491300ab785463e12dc68f7492d65
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
@@ -38,5 +39,4 @@ jobs:
       uses: Roang-zero1/github-upload-release-artifacts-action@v2.1.0
       with:
         # Allows to pass an already created tag, forces update_existing to true.
-        created_tag: 0.0.1-RELEASE 
-        GITHUB_TOKEN: 0a1f083a931491300ab785463e12dc68f7492d65 
+        created_tag: 0.0.1-RELEASE
