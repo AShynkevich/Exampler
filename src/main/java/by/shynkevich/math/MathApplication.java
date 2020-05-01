@@ -16,12 +16,15 @@ public class MathApplication {
     }
 
     private static void openHomePage() {
-        try {
-            System.setProperty("java.awt.headless", "false");
-            URI homepage = new URI("http://localhost:8080/");
-            Desktop.getDesktop().browse(homepage);
-        } catch (URISyntaxException | IOException e) {
-            e.printStackTrace();
+        System.setProperty("java.awt.headless", "false");
+        if (Desktop.isDesktopSupported()) {
+            try {
+                URI homepage = new URI("http://localhost:8080/");
+                Desktop desktop = Desktop.getDesktop();
+                desktop.browse(homepage);
+            } catch (URISyntaxException | IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
