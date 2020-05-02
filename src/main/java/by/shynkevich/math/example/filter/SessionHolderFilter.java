@@ -1,6 +1,7 @@
 package by.shynkevich.math.example.filter;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -78,7 +79,9 @@ public class SessionHolderFilter implements Filter {
     }
 
     private Optional<Cookie> extractCookie(HttpServletRequest httpRequest) {
-        return Stream.of(httpRequest.getCookies())
+        return Optional.ofNullable(httpRequest.getCookies())
+                .map(Stream::of)
+                .orElseGet(Stream::empty)
                 .filter(cookie -> EXAMPLE_COOKIE.equals(cookie.getName()))
                 .findAny();
     }
