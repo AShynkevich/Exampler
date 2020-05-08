@@ -9,6 +9,7 @@ import by.shynkevich.math.example.domain.ExampleType;
 import by.shynkevich.math.example.domain.Result;
 import by.shynkevich.math.example.exception.NoServiceException;
 import by.shynkevich.math.example.service.ExampleService;
+import by.shynkevich.math.example.service.ExampleServiceFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,7 @@ public class ExampleController {
     private static final String REDIRECT_EXAMPLES = "redirect:/examples";
 
     @Resource
-    private ExampleService exampleService;
+    private ExampleServiceFactory exServiceFactory;
 
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
@@ -52,7 +53,8 @@ public class ExampleController {
                        @RequestParam(name = "train", defaultValue = "false") boolean isTrain,
                        @RequestParam(name = "type", defaultValue = "ONE_ACTION") ExampleType type,
                        HttpSession session) {
-        exampleService.init(new ExampleService.InitParamsBuilder()
+        ExampleService service = exServiceFactory.createService();
+        service.init(new ExampleService.InitParamsBuilder()
                 .withType(type)
                 .withCount(count)
                 .withMinLimit(minLimit)
@@ -60,7 +62,7 @@ public class ExampleController {
                 .withTrain(isTrain)
                 .build());
 
-        session.setAttribute(SERVICE_KEY, exampleService);
+        session.setAttribute(SERVICE_KEY, service);
         return REDIRECT_EXAMPLES;
     }
 

@@ -37,7 +37,6 @@ public class ExampleService implements Serializable {
         this.success = new HashSet<>();
         this.failed = new AtomicInteger();
         this.train = builder.train;
-
     }
 
     public boolean checkResult(String id, String value) {
