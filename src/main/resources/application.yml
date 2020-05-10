@@ -18,4 +18,4 @@ server:
   port: 8443
 
 exampler:
-  redirect-port: ${REDIREECT_PORT:8443}
+  redirect-port: ${REDIRECT_PORT:8443}
