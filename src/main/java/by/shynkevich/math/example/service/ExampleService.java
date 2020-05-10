@@ -2,6 +2,7 @@ package by.shynkevich.math.example.service;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import by.shynkevich.math.example.domain.example.TypicalExample;
 import by.shynkevich.math.example.generator.example.ExampleGeneratorFactory;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.Builder;
+import org.apache.commons.math3.util.Pair;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,7 +29,8 @@ public class ExampleService implements Serializable {
 
     private Map<String, TypicalExample> exampleMap;
     private Set<String> success;
-    private AtomicInteger failed;
+    private Map<String, String> failed;
+    private AtomicInteger mistakeCount;
     private boolean train;
 
     public void init(InitParamsBuilder builder) {
@@ -35,7 +38,8 @@ public class ExampleService implements Serializable {
                 .mapToObj(i -> factory.createExample(builder.type, builder.minLimit, builder.maxLimit))
                 .collect(Collectors.toMap(TypicalExample::getId, entry -> entry));
         this.success = new HashSet<>();
-        this.failed = new AtomicInteger();
+        this.failed = new HashMap<>();
+        this.mistakeCount = new AtomicInteger();
         this.train = builder.train;
     }
 
@@ -48,13 +52,14 @@ public class ExampleService implements Serializable {
         if (isSuccess) {
             success.add(id);
         } else {
-            failed.incrementAndGet();
+            failed.put(id, value);
+            mistakeCount.incrementAndGet();
         }
         return isSuccess;
     }
 
     public Result getResult() {
-        return new Result(failed.get(),
+        return new Result(mistakeCount.get(),
                 success.size(),
                 exampleMap.size(),
                 exampleMap.size() == success.size());
@@ -66,6 +71,18 @@ public class ExampleService implements Serializable {
 
     public boolean isTrain() {
         return train;
+    }
+
+    public Boolean isResolved(String id) {
+        return success.contains(id);
+    }
+
+    public Boolean isFailed(String id) {
+        return (!train) && failed.containsKey(id);
+    }
+
+    public String getWrongValue(String id) {
+        return failed.get(id);
     }
 
     public static class InitParamsBuilder implements Builder<InitParamsBuilder> {

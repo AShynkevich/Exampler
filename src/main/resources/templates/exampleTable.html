@@ -20,7 +20,8 @@
     <main role="main" class="container">
         <table class="table">
             <input id="ex-mode" type="hidden" th:value="${session.service.train}">
-            <tr th:each="example : ${session.service.examples}">
+            <tr th:each="example : ${session.service.examples}"
+                th:with="resolved=${session.service.isResolved(example.id)},failed=${session.service.isFailed(example.id)}">
                 <th:block th:each="term: ${example.terms}">
                     <td th:if="${term.hidden}">
                         <th:block th:switch="${example.type.name()}">
@@ -30,13 +31,25 @@
                                 <option value="&gt;">&gt;</option>
                                 <option value="=">=</option>
                             </select>
-                            <input th:case="*" th:input-id="${example.id}" type="number" required="true">
+                            <input th:case="*"
+                                   th:input-id="${example.id}"
+                                   th:value="${resolved ? term.show()
+                                                        : (failed ? session.service.getWrongValue(example.id) : '')}"
+                                   th:disabled="${resolved or failed}"
+                                   type="number" required="true">
                         </th:block>
                     </td>
                     <td th:unless="${term.hidden}" th:text="${term.show()}" />
                 </th:block>
                 <td>
-                    <button th:text="#{example.check.button}" th:id="${example.id}" type="button" class="btn btn-info" onclick="check(this)"></button>
+                    <button th:text="${resolved ? #messages.msg('example.check.correct')
+                                                : (failed ? #messages.msg('example.check.incorrect')
+                                                          : #messages.msg('example.check.button'))}"
+                            th:id="${example.id}"
+                            th:disabled="${resolved or failed}"
+                            type="button"
+                            th:class="'btn ' + ${resolved ? 'btn-success' : (failed ? 'btn-danger' : 'btn-info')}"
+                            onclick="check(this)"></button>
                 </td>
             </tr>
         </table>

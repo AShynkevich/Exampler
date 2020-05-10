@@ -8,6 +8,7 @@ function check(elem) {
             value: val
         }, function(data) {
             if (data) {
+                // is correct answer
                 but.text(correctMsg);
                 but.attr('class', 'btn btn-success');
                 but.attr('disabled', true);
@@ -21,6 +22,7 @@ function check(elem) {
                     }
                 });
             } else {
+                // is incorrect answer
                 $('#wrongModal').modal();
                 but.text(incorrectMsg);
                 but.attr('class', 'btn btn-danger');
@@ -37,6 +39,7 @@ function getResult() {
         console.log(data.countFailed);
         console.log(data.countTotal);
         console.log(data.done);
+
         $('#failed').html(data.countFailed);
         $('#resolved').html(data.countResolved);
         $('#total').html(data.countTotal);
