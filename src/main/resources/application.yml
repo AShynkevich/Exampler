@@ -2,7 +2,20 @@ spring:
   profiles:
     active: ${PROFILE:prod}
 
+security:
+  require-ssl: true
+
 server:
   servlet:
     session:
       timeout=90m:
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: exampler-password
+    key-store-type: pkcs12
+    key-alias: exampler
+    key-password: exampler-password
+  port: 8443
+
+exampler:
+  redirect-port: ${REDIREECT_PORT:8443}

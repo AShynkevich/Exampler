@@ -9,6 +9,12 @@ COPY build/libs/math-0.0.1-SNAPSHOT.jar app.jar
 COPY docker-entrypoint.sh /usr/local/bin/entrypoint
 # make entrypoint as executable
 RUN chmod +x /usr/local/bin/entrypoint
+# creating folder /usr/src/app/ssl
+RUN mkdir ssl
+
+COPY ssl/keystore.p12 /usr/src/app/ssl/keystore.p12
+
+
 
 # Inform Docker that the container is listening on the specified port at runtime.
 EXPOSE 8080
