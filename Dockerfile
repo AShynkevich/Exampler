@@ -11,10 +11,8 @@ COPY docker-entrypoint.sh /usr/local/bin/entrypoint
 RUN chmod +x /usr/local/bin/entrypoint
 # creating folder /usr/src/app/ssl
 RUN mkdir ssl
-
+# copying the self-sighed cert to image
 COPY ssl/keystore.p12 /usr/src/app/ssl/keystore.p12
-
-
 
 # Inform Docker that the container is listening on the specified port at runtime.
 EXPOSE 8080
