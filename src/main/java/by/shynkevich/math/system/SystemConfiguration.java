@@ -28,8 +28,7 @@ public class SystemConfiguration {
     private static final String PATTERN = "/*";
 
     @Value("${exampler.redirect-port}")
-    private int serverPort;
-
+    private int redirectPort;
 
     @Bean
     public FilterRegistrationBean<SessionHolderFilter> loggingFilter() {
@@ -64,7 +63,7 @@ public class SystemConfiguration {
         connector.setScheme(HTTP_SCHEME);
         connector.setPort(8080);
         connector.setSecure(false);
-        connector.setRedirectPort(serverPort);
+        connector.setRedirectPort(redirectPort);
         return connector;
     }
 }
