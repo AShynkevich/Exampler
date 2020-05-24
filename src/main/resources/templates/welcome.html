@@ -14,9 +14,36 @@
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#" th:text="#{nav.home}"></a>
-        <th:block th:if="${session.service != null}">
-            <a class="navbar-nav" href="/examples" th:text="#{nav.continue}"></a>
-        </th:block>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <th:block th:if="${session.service != null}">
+                    <li class="nav-item">
+                        <a id="continue" class="nav-link" href="/examples" th:text="#{nav.continue}"></a>
+                    </li>
+                </th:block>
+                <li class="align-self-end nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="#"
+                       id="navbarDropdown"
+                       role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false" th:text="#{nav.about}">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="https://github.com/AShynkevich/Exampler">GitHub</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <main role="main" class="container">
@@ -57,7 +84,7 @@
     </main>
 <!-- /.container -->
 
-<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
-<script type="text/javascript" th:src="@{webjars/jquery/3.3.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{webjars/jquery/3.3.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
 </body>
 </html>

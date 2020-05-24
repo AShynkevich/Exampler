@@ -18,7 +18,6 @@ import by.shynkevich.math.example.domain.example.TypicalExample;
 import by.shynkevich.math.example.generator.example.ExampleGeneratorFactory;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.Builder;
-import org.apache.commons.math3.util.Pair;
 import org.springframework.stereotype.Service;
 
 @Service

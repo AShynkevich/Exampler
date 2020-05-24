@@ -24,7 +24,7 @@ input {
     width: 70px;
 }
 
-.navbar-nav {
+#continue.nav-link {
     color: darkkhaki;
 }
 

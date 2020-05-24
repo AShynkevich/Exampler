@@ -27,12 +27,6 @@ jobs:
     - name: Build with Gradle
       run: gradle build
 
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: exampler-release
-        path: build/libs/math-0.0.1-SNAPSHOT.jar
-        
     - name: Docker Action
       uses: zenato/docker-action@master
       with:
