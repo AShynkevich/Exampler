@@ -72,6 +72,13 @@ public class ExampleController {
         return new ResponseEntity<>(service.getResult(), HttpStatus.OK);
     }
 
+    @GetMapping("/restart")
+    public String restartExamples(HttpSession session) {
+        ExampleService service = extractService(session);
+        service.init();
+        return REDIRECT_EXAMPLES;
+    }
+
     @PostMapping("/{id}")
     public ResponseEntity<Boolean> checkResult(@PathVariable("id") String id,
                                                @RequestParam("value") String value,

@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MathApplication {
 
     private static final String BROWSER_PROPERTY = "browser";
-    private static final String LOCALHOST = "http://localhost:8080/";
+    private static final String LOCALHOST = "https://localhost:8443/";
 
     public static void main(String[] args) {
         SpringApplication.run(MathApplication.class, args);

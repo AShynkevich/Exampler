@@ -30,16 +30,30 @@ public class ExampleService implements Serializable {
     private Set<String> success;
     private Map<String, String> failed;
     private AtomicInteger mistakeCount;
+
     private boolean train;
+    private ExampleType type;
+    private Integer count;
+    private Integer minLimit;
+    private Integer maxLimit;
 
     public void init(InitParamsBuilder builder) {
-        this.exampleMap = IntStream.range(0, builder.count)
-                .mapToObj(i -> factory.createExample(builder.type, builder.minLimit, builder.maxLimit))
+        this.type = builder.type;
+        this.count = builder.count;
+        this.minLimit = builder.minLimit;
+        this.maxLimit = builder.maxLimit;
+        this.train = builder.train;
+
+        init();
+    }
+
+    public void init() {
+        this.exampleMap = IntStream.range(0, count)
+                .mapToObj(i -> factory.createExample(type, minLimit, maxLimit))
                 .collect(Collectors.toMap(TypicalExample::getId, entry -> entry));
         this.success = new HashSet<>();
         this.failed = new HashMap<>();
         this.mistakeCount = new AtomicInteger();
-        this.train = builder.train;
     }
 
     public boolean checkResult(String id, String value) {
