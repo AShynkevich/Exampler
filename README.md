@@ -22,5 +22,15 @@
 ### To create PKCS12 keystore
 `keytool -genkeypair -alias exampler -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 3650 -storepass password`
 
+# Import existing certificate
+
+`cat cert.pem intermediate.pem root.pem > import.pem`
+
+`openssl pkcs12 -export -in import.pem -inkey private-key.pem
+ -name exampler > keystore.p12`
+
+`keytool -importkeystore -srckeystore keystore.p12
+-destkeystore keystore.keys -srcstoretype pkcs12 -alias exampler`
+
 # Official site
 [https://uncle-sania.fun](https://uncle-sania.fun)
