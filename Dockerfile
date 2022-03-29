@@ -2,10 +2,8 @@
 FROM azul/zulu-openjdk-alpine:11
 
 # creating folder /usr/src/app/ssl
-RUN mkdir ssl
+RUN mkdir cert
 # copying the self-sighed cert to image
-COPY ssl/keystore.p12 /usr/src/app/ssl/keystore.p12
-# Set the working directory.
 WORKDIR /usr/src/app
 
 COPY docker-entrypoint.sh /usr/local/bin/entrypoint
