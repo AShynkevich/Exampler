@@ -1,7 +1,7 @@
 # Use the official image as a parent image.
 FROM azul/zulu-openjdk-alpine:11
 
-# creating folder /usr/src/app/ssl
+# creating folder /usr/src/app/cert
 RUN mkdir cert
 # copying the self-sighed cert to image
 WORKDIR /usr/src/app
