@@ -30,14 +30,6 @@ public class SystemConfiguration {
     private static final String CONFIDENTIAL_USER_CONSTRAINT = "CONFIDENTIAL";
     private static final String PATTERN = "/*";
 
-    static {
-        try {
-            KeyStore keyStore = KeyStore.getInstance("PEM");
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Value("${exampler.redirect-port}")
     private int redirectPort;
 
