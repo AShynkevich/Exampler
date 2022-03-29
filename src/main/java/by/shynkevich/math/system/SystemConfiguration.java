@@ -41,7 +41,7 @@ public class SystemConfiguration {
         return registrationBean;
     }
 
-    @Bean
+//    @Bean
     public ServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
             @Override
