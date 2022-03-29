@@ -1,5 +1,8 @@
 package by.shynkevich.math.system;
 
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+
 import by.shynkevich.math.example.filter.SessionHolderFilter;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
@@ -27,6 +30,14 @@ public class SystemConfiguration {
     private static final String CONFIDENTIAL_USER_CONSTRAINT = "CONFIDENTIAL";
     private static final String PATTERN = "/*";
 
+    static {
+        try {
+            KeyStore keyStore = KeyStore.getInstance("PEM");
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Value("${exampler.redirect-port}")
     private int redirectPort;
 
@@ -41,7 +52,7 @@ public class SystemConfiguration {
         return registrationBean;
     }
 
-//    @Bean
+    @Bean
     public ServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
             @Override
