@@ -1,5 +1,5 @@
 # Use the official image as a parent image.
-FROM anapsix/alpine-java:latest
+FROM azul/zulu-openjdk-alpine:11
 
 # creating folder /usr/src/app/ssl
 RUN mkdir ssl
