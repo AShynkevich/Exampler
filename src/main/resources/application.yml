@@ -15,7 +15,7 @@ server:
     key-store-type: PEMCFG
     key-store-password: dummy
     key-alias: keycert
-  port: 8080
+  port: 8443
 
 exampler:
   redirect-port: ${REDIRECT_PORT:8443}
