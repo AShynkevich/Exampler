@@ -1,8 +1,5 @@
 package by.shynkevich.math.system;
 
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-
 import by.shynkevich.math.example.filter.SessionHolderFilter;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
