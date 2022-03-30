@@ -32,5 +32,11 @@
 `keytool -importkeystore -srckeystore keystore.p12
 -destkeystore keystore.keys -srcstoretype pkcs12 -alias exampler`
 
+# Import letsencrypt certificate
+
+`openssl pkcs12 -export -in /etc/letsencrypt/live/uncle-sania.fun/fullchain.pem 
+-inkey /etc/letsencrypt/live/uncle-sania.fun/privkey.pem -out ./ssl/keystore.p12 -name exampler 
+-CAfile /etc/letsencrypt/live/uncle-sania.fun/chain.pem -caname root -password pass:yourpassword`
+
 # Official site
 [https://uncle-sania.fun](https://uncle-sania.fun)
