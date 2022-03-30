@@ -3,8 +3,8 @@ FROM azul/zulu-openjdk-alpine:11
 
 # copying the self-sighed cert to image
 WORKDIR /usr/src/app
-# creating folder /usr/src/app/cert
-RUN mkdir cert
+# creating folder /usr/src/app/ssl
+RUN mkdir ssl
 
 COPY docker-entrypoint.sh /usr/local/bin/entrypoint
 # make entrypoint as executable
