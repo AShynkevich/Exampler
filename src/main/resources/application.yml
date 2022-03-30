@@ -10,11 +10,11 @@ server:
     session:
       timeout=90m:
   ssl:
-    enabled: true
-    key-store: classpath:keystore.properties
-    key-store-type: PEMCFG
-    key-store-password: dummy
-    key-alias: keycert
+    key-store: classpath:keystore.p12
+    key-store-password: password
+    key-store-type: pkcs12
+    key-alias: exampler
+    key-password: password
   port: 8443
 
 exampler:

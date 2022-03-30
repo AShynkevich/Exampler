@@ -1,12 +1,10 @@
 package by.shynkevich.math;
 
-import java.awt.Desktop;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.security.Security;
 
-import de.dentrassi.crypto.pem.PemKeyStoreProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -17,7 +15,6 @@ public class MathApplication {
     private static final String LOCALHOST = "https://localhost:8443/";
 
     public static void main(String[] args) {
-        Security.addProvider(new PemKeyStoreProvider());
         SpringApplication.run(MathApplication.class, args);
         openHomePage();
     }
