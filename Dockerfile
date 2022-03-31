@@ -14,7 +14,7 @@ RUN chmod +x /usr/local/bin/entrypoint
 COPY build/libs/math-0.0.1-SNAPSHOT.jar app.jar
 
 RUN --mount=type=secret,id=CERT_PASSWORD \
-    export CERT_PASSWORD=$(cat /run/secrets/CERT_PASSWORD)
+    export CERT_PASSWORD=$(cat /run/secrets/CERT_PASSWORD) && echo $CERT_PASSWORD
 
 EXPOSE 8080
 ENTRYPOINT ["entrypoint"]
