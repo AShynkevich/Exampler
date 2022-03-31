@@ -13,7 +13,7 @@ RUN chmod +x /usr/local/bin/entrypoint
 # Copy the file from your host to your current location.
 COPY build/libs/math-0.0.1-SNAPSHOT.jar app.jar
 
-RUN --mount=type=secret,id= \
+RUN --mount=type=secret,id=CERT_PASSWORD \
     export CERT_PASSWORD=$(cat /run/secrets/CERT_PASSWORD)
 
 EXPOSE 8080
