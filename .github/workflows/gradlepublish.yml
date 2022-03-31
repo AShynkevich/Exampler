@@ -43,8 +43,7 @@ jobs:
         context: .
         push: true
         tags: unclesania/exampler:latest
-        secrets: |
-          "CERT_PASSWORD=${{ secrets.CERT_PASSWORD }}"
+        build-args: CERT_PASSWORD=${{ secrets.CERT_PASSWORD }}
 #
 #    - name: Docker Action
 #      uses: zenato/docker-action@master
