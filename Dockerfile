@@ -13,5 +13,6 @@ RUN chmod +x /usr/local/bin/entrypoint
 COPY build/libs/math-0.0.1-SNAPSHOT.jar app.jar
 
 # Inform Docker that the container is listening on the specified port at runtime.
+ENV CERT_PASSWORD=${CERT_PASSWORD}
 EXPOSE 8080
 ENTRYPOINT ["entrypoint"]

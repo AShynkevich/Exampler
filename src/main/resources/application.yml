@@ -11,10 +11,10 @@ server:
       timeout=90m:
   ssl:
     key-store: classpath:keystore.p12
-    key-store-password: ifvfy
+    key-store-password: ${CERT_PASSWORD:secret}
     key-store-type: pkcs12
     key-alias: exampler
-    key-password: ifvfy
+    key-password: ${CERT_PASSWORD:secret}
   port: 8443
 
 exampler:

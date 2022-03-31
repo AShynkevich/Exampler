@@ -24,6 +24,8 @@ jobs:
 
     - name: Build with Gradle
       run: gradle build
+      env:
+        CERT_PASSWORD: ${{ secrets.CERT_PASSWORD }}
 
     - name: Docker Action
       uses: zenato/docker-action@master
