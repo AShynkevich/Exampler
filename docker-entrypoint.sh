@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-echo "PASS: $CERT_PASSWORD"
-
 java \
 -Xmx1024m \
 -DREDIRECT_PORT=443 \
