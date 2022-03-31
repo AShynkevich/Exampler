@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+--mount=type=secret,id=CERT_PASSWORD export CERT_PASSWORD=$(cat /run/secrets/CERT_PASSWORD)
 echo "PASS: $CERT_PASSWORD"
 
 java \
