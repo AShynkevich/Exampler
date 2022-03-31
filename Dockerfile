@@ -9,10 +9,12 @@ RUN mkdir ssl
 COPY docker-entrypoint.sh /usr/local/bin/entrypoint
 # make entrypoint as executable
 RUN chmod +x /usr/local/bin/entrypoint
-RUN --mount=type=secret,id=CERT_PASSWORD
 
 # Copy the file from your host to your current location.
 COPY build/libs/math-0.0.1-SNAPSHOT.jar app.jar
+
+RUN --mount=type=secret,id= \
+    export CERT_PASSWORD=$(cat /run/secrets/CERT_PASSWORD)
 
 EXPOSE 8080
 ENTRYPOINT ["entrypoint"]
